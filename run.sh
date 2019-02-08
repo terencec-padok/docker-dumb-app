@@ -1,12 +1,10 @@
 #!/bin/bash
 
-if [ -d "~/app" ]; then
-  rm -rf ~/app 
-fi
+rm -rf ~/app/Dockerfile ~/app/app.js
 
-mkdir ~/app
-cp -a ~/docker-dumb-app/. ~/app
-rm -rf ~/docker-dumb-app
+cp -a ~/tmp/Dockerfile ~/app
+cp -a ~/tmp/app.js ~/app
+rm -rf ~/tmp/Dockerfile ~/tmp/app.js
 
 #Suppression de l'environnement et des ressources
 docker stop dumb-app-docker
