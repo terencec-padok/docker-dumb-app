@@ -8,3 +8,5 @@ Etapes pour lancer un déploiement:
       <li>lancer la commande "sudo ./deploy.sh <PATH TO KEY>" où <PATH TO KEY> est le chemin vers votre clé SSH</li>
       <li>les logs apparaissent dans la console: l'indication "Successfully tagged dumb-app-serv:v1" indique une réussite de la procédure</li>
         </ul>
+
+Ceci est un test de trigger
