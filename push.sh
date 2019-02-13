@@ -52,12 +52,7 @@ if git diff-index --quiet HEAD --; then
     #Checkout on the selected branch
     git checkout $S
 
-    #Now install 
-    ssh -i $KEYNAME $SERVER
-
-    scp -i $KEYNAME $SERVER:/app
-
-
+    ssh -i $KEYNAME $SERVER < deploy.sh
 
 else
     #There is Changements
