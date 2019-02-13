@@ -1,4 +1,0 @@
-origin/feature-A
-origin/master
-origin/matthieu
-origin/yohandev

@@ -44,7 +44,7 @@ echo $S
 #Checkout on the selected branch
 git checkout $S
 
-
+rm branch.txt
 
 
 
