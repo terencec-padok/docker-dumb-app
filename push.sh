@@ -5,8 +5,8 @@ echo "Here are your branches, choose which one you want to deploy :"
 
 #Delete first lines then saves (Current branch and HEAD position) and 
 #Removing the white space before first word with sed on each lines
-git branch -a | sed -e 's/^[ \t]*//' >> branch.txt
-vim branch.txt -c ":1d" -c ":1d" -c ":wq!"
+git branch -r | sed -e 's/^[ \t]*//' >> branch.txt
+vim branch.txt -c ":g/HEAD/d" -c ":wq!"
 
 echo "------------------------------------------------------------"
 #Array that will contain each branch in this git repo
@@ -36,7 +36,23 @@ select opt in "${BRANCH[@]}"; do
             ;;
     esac
 done
-S=`echo $VALUE | awk -F '/' '{print $3}'`
-echo $S
 
-rm branch.txt
+#Edit the output to get only the branch_name (instead of origin/branch_name)
+S=`echo $VALUE | awk -F '/' '{print $2}'`
+echo $S 
+
+#Checkout on the selected branch
+git checkout $S
+
+
+
+
+
+
+
+
+
+
+
+
+
