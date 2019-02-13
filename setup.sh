@@ -1,14 +1,14 @@
 #!/bin/bash
 
-#Change this variable by the name of your user on the remote server.
-USER="ubuntu"
+#Load variables
+source data.sh
 
 #Install docker & add user to group docker.
-sudo apt install docker.io -y
-sudo usermod -aG docker $USER
-
-mkdir app
-
-
-
-
+ssh -i $KEYNAME $SERVER << EOF
+    echo "[ ] Docker Installation"
+    sudo apt install docker.io -y
+    echo "[X] Docker Installation"
+    echo "[ ] Adding user to docker group"
+    sudo usermod -aG docker $USER
+    echo "[X] Adding user to docker group"
+EOF
