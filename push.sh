@@ -47,10 +47,6 @@ if git diff-index --quiet HEAD --; then
 
     #Edit the output to get only the branch_name (instead of origin/branch_name)
     S=`echo $VALUE | awk -F '/' '{print $2}'`
-    #echo $S 
-
-    #Checkout on the selected branch
-    git checkout $S
 
     ssh -i $KEYNAME $SERVER < deploy.sh
 
