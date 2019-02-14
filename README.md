@@ -22,7 +22,6 @@ chmod ug+x+w data.sh
 ```
 
 
-
 ## First Launch
 
 On the first launch of this project, execute `setup.sh` in order to setup your remote server (Install Docker and add your user to the docker group)

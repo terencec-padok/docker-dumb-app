@@ -4,11 +4,6 @@
 source data.sh
 
 echo "----------------Initialing deployment script----------------"
-
-#Checking if you have everything up to branch (nothing to push or in conflict)
-#if git diff-index --quiet HEAD --; then
-#Your repo is up to date and there is nothing to push, you can safely
-#checkout to other branches (which mean push any branches)
 echo "Here are your branches, choose which one you want to deploy :"
 
 #Delete first lines then saves (Current branch and HEAD position) and 
@@ -45,9 +40,6 @@ select opt in "${BRANCH[@]}"; do
     esac
 done
 
-#Edit the output to get only the branch_name (instead of origin/branch_name)
-S=`echo $VALUE | awk -F '/' '{print $2}'`
-
 ssh -i $KEYNAME $SERVER << EOF
     git clone https://github.com/padok-team/docker-dumb-app.git
     cd $REPONAME/
@@ -55,15 +47,8 @@ ssh -i $KEYNAME $SERVER << EOF
 
     docker build -t docker-dumb-app-serv:v1 .
     docker run -d -p 80:8080 --name $REPONAME docker-dumb-app-serv:v1
-    docker ps
-    echo "$(wget 0.0.0.0:80 -q -O -)"
 EOF
-
-#else
-    #There is Changements
-    #echo "Error, you need to add, commit and push your changes before executing this script..."
-    #echo "Exiting now..."
-#fi
+echo "------------------------------------------------------------"
 
 
 
