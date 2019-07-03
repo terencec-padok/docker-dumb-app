@@ -29,8 +29,9 @@
             web:
               build: "{{ app_location }}"
               ports:
-                - '80:8080'
+                - '{{ app_port }}:8080'
   vars:
     app_location: /var/opt/dumb-app/
     app_branch: feature-A
+    app_port: 3000
 ...
