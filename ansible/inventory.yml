@@ -1,0 +1,6 @@
+---
+all:
+  hosts:
+    instance-1:
+      ansible_host: 35.204.237.58
+...

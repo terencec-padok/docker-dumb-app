@@ -1,0 +1,8 @@
+---
+- name: Deploy simple node app
+  hosts: instance-1
+  strategy: linear
+  become: true
+  roles:
+    - geerlingguy.docker
+...
