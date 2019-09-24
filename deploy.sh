@@ -20,3 +20,6 @@ else
 fi
 docker run -d -p 8080:8080 --name docker-dumb-app dumb-docker-app:latest
 echo container en production 
+
+echo cleaning up
+docker image prune -f
