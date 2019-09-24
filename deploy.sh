@@ -1,5 +1,6 @@
 #!/bin/bash
-
+ssh 35.239.158.44 /bin/bash << EOF
+cd docker-dumb-app
 if [ $# -eq 0 ] ; then
     echo specify a branch
     exit 0
@@ -20,3 +21,5 @@ else
 fi
 docker run -d -p 8080:8080 --name docker-dumb-app dumb-docker-app:latest
 echo container en production 
+
+EOF
