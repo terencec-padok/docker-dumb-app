@@ -1,0 +1,4 @@
+#!/bin/bash
+
+ssh -i ~/Téléchargements/Key2.pem ubuntu@ec2-18-222-124-156.us-east-2.compute.amazonaws.com 'cd docker-dumb-app; git pull; sudo docker build -t test .; sudo docker run -d -p 3000:8080 test;'
+exit
