@@ -6,3 +6,9 @@ steps:
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/padok-training-lab/docker-dumb-app:latest']
 
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  args: ['gsutil', 'cp', '-r', 'gs://padok-training-lab_cloudbuild/philippe-training/philippe-key.tar.gz', '/workspace/']
+
+- name: unbuntu
+  args: ['bash', 'cloud_install.sh']
+
