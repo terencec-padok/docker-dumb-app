@@ -1,6 +1,8 @@
 eval `ssh-agent`
 
 tar -zxvf /workspace/philippe-key.tar.gz
+
+mkdir ~/.ssh
 mv philippe-formation.pem  ~/.ssh/id_rsa
 chmod 600 ~/.ssh/id_rsa
 ssh-add ~/.ssh/id_rsa
