@@ -9,6 +9,6 @@ steps:
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   args: ['gsutil', 'cp', '-r', 'gs://padok-training-lab_cloudbuild/philippe-training/philippe-key.tar.gz', '/workspace/']
 
-- name: ubuntu
+- name: 'kroniak/ssh-client'
   args: ['bash', 'cloud_install.sh']
 
