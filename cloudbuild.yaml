@@ -11,6 +11,7 @@
    args:
    - 'run'
    - 'deploy'
+   - '--allow-unauthenticated'
    - 'docker-dumb-app-terencec'
    - '--image'
    - 'gcr.io/padok-lab/docker-dumb-app-terencec:$COMMIT_SHA'
