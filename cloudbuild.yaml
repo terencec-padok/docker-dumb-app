@@ -1,13 +1,22 @@
-steps:
-# Build the container image
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/padok-team/docker-dumb-app', '.']
-# Push the container image to Container Registry
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/padok-team/docker-dumb-app']
-# Deploy container image to Cloud Run
-- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-  entrypoint: gcloud
-  args: ['run', 'deploy', 'docker-dumb-app-terencec', '--image', 'gcr.io/padok-team/docker-dumb-app', '--region', 'us-central-1', '--platform', 'managed']
-images:
-- gcr.io/padok-team/docker-dumb-app
+ steps:
+ # Build the container image
+ - name: 'gcr.io/cloud-builders/docker'
+   args: ['build', '-t', 'gcr.io/padok-lab/docker-dumb-app-terencec:$COMMIT_SHA', '.']
+ # Push the container image to Container Registry
+ - name: 'gcr.io/cloud-builders/docker'
+   args: ['push', 'gcr.io/padok-lab/docker-dumb-app-terencec:$COMMIT_SHA']
+ # Deploy container image to Cloud Run
+ - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+   entrypoint: gcloud
+   args:
+   - 'run'
+   - 'deploy'
+   - 'docker-dumb-app-terencec'
+   - '--image'
+   - 'gcr.io/padok-lab/docker-dumb-app-terencec:$COMMIT_SHA'
+   - '--region'
+   - 'us-central1'
+   - '--platform'
+   - 'managed'
+ images:
+ - 'gcr.io/padok-lab/docker-dumb-app-terencec:$COMMIT_SHA'
