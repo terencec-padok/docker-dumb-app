@@ -26,7 +26,7 @@ then
             git clone --quiet --branch $branch git@github.com:terencec-padok/docker-dumb-app.git docker-dumb-app_$branch
             cd docker-dumb-app_$branch
             # Stop and remove an existing container running the app after checking if it exists
-            container_exists=`docker ps --filter name=docker-dumb-app | grep -o docker-dumb-app:$branch`
+            container_exists=`docker ps --filter name=docker-dumb-app | grep -o Up`
             if [ $container_exists ]
             then
                 echo "Stopping and removing the previously ran containers"
@@ -34,10 +34,10 @@ then
             fi
             # Build the image
             echo "Building the image"
-            docker build --quiet --no-cache . -t docker-dumb-app:$branch
+            docker build --quiet --no-cache . -t docker-dumb-app
             # Run the image detached with port mapping
             echo "Running the image"
-            docker run -d -p 8080:8080 --name docker-dumb-app docker-dumb-app:$branch
+            docker run -d -p 8080:8080 --name docker-dumb-app docker-dumb-app
         else    
             echo "This branch does not exist"
         fi
